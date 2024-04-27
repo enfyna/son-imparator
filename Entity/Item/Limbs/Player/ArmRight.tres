@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_7waxd")
 type = 1
+ability_name = &"BasicSwordHit"
 is_mech = false
 condition = 90
 item_name = &"Right Arm"

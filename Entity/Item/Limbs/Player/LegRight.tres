@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_k78rp")
 type = 3
-ability_name = &"BasicSwordHit"
+ability_name = &""
 is_mech = false
 condition = null
 item_name = &"Right Leg"
