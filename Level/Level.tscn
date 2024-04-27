@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceroww3ysgj0r"]
+
+[ext_resource type="PackedScene" uid="uid://dsujvjmtm6rr6" path="res://Entity/Player/Player.tscn" id="1_vihaq"]
+[ext_resource type="PackedScene" uid="uid://jmv1ux02rl7l" path="res://Entity/Enemy/Enemy.tscn" id="2_alqm1"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_vihaq")]
+position = Vector2(256, 407)
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_alqm1")]
+position = Vector2(964, 233)
+target = NodePath("../Player")
