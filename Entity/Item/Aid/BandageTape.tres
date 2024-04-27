@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Aid" load_steps=2 format=3 uid="uid://cqg2lxfnhalt3"]
+
+[ext_resource type="Script" path="res://Entity/Item/Aid.gd" id="1_ejtct"]
+
+[resource]
+script = ExtResource("1_ejtct")
+type = 0
+amount = 50
+randomize_type = true
+item_name = &"Bandage Tape"
+item_rarity = 0

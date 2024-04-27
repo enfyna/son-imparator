@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Limb" load_steps=2 format=3 uid="uid://cwiqiqgt23f5m"]
+
+[ext_resource type="Script" path="res://Entity/Item/Limb.gd" id="1_jk7pi"]
+
+[resource]
+script = ExtResource("1_jk7pi")
+type = 2
+is_mech = false
+condition = 90
+item_name = &"Left Leg"
+item_rarity = 2

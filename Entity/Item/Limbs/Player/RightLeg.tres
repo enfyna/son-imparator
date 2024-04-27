@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Limb" load_steps=2 format=3 uid="uid://bqfaueaogqa6p"]
+
+[ext_resource type="Script" path="res://Entity/Item/Limb.gd" id="1_k78rp"]
+
+[resource]
+script = ExtResource("1_k78rp")
+type = 3
+ability_name = &"BasicSwordHit"
+is_mech = false
+condition = null
+item_name = &"Right Leg"
+item_rarity = 2
