@@ -72,7 +72,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 3.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -89,7 +89,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_back",
-"speed": 4.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -106,7 +106,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_front",
-"speed": 4.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -123,7 +123,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_left",
-"speed": 4.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -140,7 +140,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_right",
-"speed": 4.0
+"speed": 8.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -152,7 +152,8 @@ shape = SubResource("RectangleShape2D_erior")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5toeu")
-frame_progress = 0.954046
+animation = &"move_back"
+frame_progress = 0.0707548
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("input")]
 script = ExtResource("2_oc1qh")

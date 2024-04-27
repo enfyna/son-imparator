@@ -52,16 +52,16 @@ func activate(direction : int):
     parent.add_child(active_attack)
 
     if direction == 0:
-        active_attack.position.x += 129
+        active_attack.position.x += 63
         sp.rotation = 90
     elif direction == 1:
-        active_attack.position.x -= 129
+        active_attack.position.x -= 63
         sp.rotation = 180
     elif direction == 2:
-        active_attack.position.y += 129
+        active_attack.position.y += 63
         sp.rotation = 180
     elif direction == 3:
-        active_attack.position.y -= 129
+        active_attack.position.y -= 63
         sp.rotation = 270
     
     hit_something = false
