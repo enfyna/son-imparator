@@ -9,6 +9,7 @@
 size = Vector2(128, 128)
 
 [node name="Player" type="CharacterBody2D"]
+platform_floor_layers = 4278190080
 script = ExtResource("1_sehdw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

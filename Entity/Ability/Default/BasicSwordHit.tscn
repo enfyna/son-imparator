@@ -1,25 +1,69 @@
-[gd_scene load_steps=5 format=3 uid="uid://ojsals5ykgfo"]
+[gd_scene load_steps=11 format=3 uid="uid://cs3xtipi0t2cs"]
 
-[ext_resource type="Script" path="res://Entity/DamageArea/DamageArea.gd" id="1_gwesx"]
 [ext_resource type="Script" path="res://Entity/Ability/Ability.gd" id="1_kseej"]
-[ext_resource type="Texture2D" uid="uid://c4jeax014q7ug" path="res://icon.svg" id="3_ut5ik"]
+[ext_resource type="Texture2D" uid="uid://dp3dw0eo1rbqd" path="res://Texture/Ability/BasicSword/spritesheet.png" id="2_dslij"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fvgbs"]
-size = Vector2(200, 200)
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6uoh"]
+atlas = ExtResource("2_dslij")
+region = Rect2(0, 0, 128, 128)
 
-[node name="Ability" type="Node" node_paths=PackedStringArray("aoe")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rtqh"]
+atlas = ExtResource("2_dslij")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6h04"]
+atlas = ExtResource("2_dslij")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwfv5"]
+atlas = ExtResource("2_dslij")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8i53"]
+atlas = ExtResource("2_dslij")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwq7c"]
+atlas = ExtResource("2_dslij")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr7b5"]
+atlas = ExtResource("2_dslij")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efe4k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6uoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rtqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6h04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwfv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8i53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwq7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr7b5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 16.0
+}]
+
+[node name="Ability" type="Node"]
 script = ExtResource("1_kseej")
-cooldown = 2.0
-aoe = NodePath("BasicSwordHit")
+aoe_size = 200
 
-[node name="BasicSwordHit" type="Area2D" parent="."]
-script = ExtResource("1_gwesx")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicSwordHit"]
-shape = SubResource("RectangleShape2D_fvgbs")
-
-[node name="Sprite2D" type="Sprite2D" parent="BasicSwordHit"]
-texture = ExtResource("3_ut5ik")
-
-[connection signal="area_entered" from="BasicSwordHit" to="BasicSwordHit" method="_on_area_entered"]
-[connection signal="body_entered" from="BasicSwordHit" to="BasicSwordHit" method="_on_body_entered"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_efe4k")
+autoplay = "default"

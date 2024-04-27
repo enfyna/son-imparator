@@ -32,20 +32,42 @@ grow_vertical = 0
 [node name="RichTextLabel" type="RichTextLabel" parent="Label"]
 layout_mode = 2
 bbcode_enabled = true
-text = "[color=green]'%s'[/color] almak ister misin?
+text = "[center][color=green]'%s'[/color] almak ister misin?
 
-[color=green]+25 sağlık"
+[color=CORNFLOWER_BLUE]%s
+[color=green]%%%s"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Label"]
+[node name="AidButtons" type="HBoxContainer" parent="Label"]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Label/HBoxContainer"]
-custom_minimum_size = Vector2(75, 0)
+[node name="Confirm" type="Button" parent="Label/AidButtons"]
 layout_mode = 2
-texture = ExtResource("1_yes04")
-expand_mode = 4
+text = "Al"
+
+[node name="LimbButtons" type="HBoxContainer" parent="Label"]
+layout_mode = 2
+alignment = 1
+
+[node name="ARM_LEFT" type="Button" parent="Label/LimbButtons"]
+layout_mode = 2
+text = "Sol Kol"
+
+[node name="ARM_RIGHT" type="Button" parent="Label/LimbButtons"]
+layout_mode = 2
+text = "Sağ Kol
+"
+
+[node name="LEG_LEFT" type="Button" parent="Label/LimbButtons"]
+layout_mode = 2
+text = "Sol Bacak
+"
+
+[node name="LEG_RIGHT" type="Button" parent="Label/LimbButtons"]
+layout_mode = 2
+text = "Sağ Bacak
+"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -14,6 +14,7 @@ size = Vector2(128, 128)
 bg_color = Color(0.0184255, 0.728171, 3.85046e-07, 1)
 
 [node name="Enemy" type="CharacterBody2D"]
+platform_floor_layers = 4278190080
 script = ExtResource("1_0aiib")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

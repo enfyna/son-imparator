@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-var limbs : Array[Limb] = []
+var limbs : Dictionary = {}
 var direction : int = 0
 
 func _ready() -> void:
@@ -16,7 +16,8 @@ func _ready() -> void:
                 ability.parent = self
                 ability.is_player = true
                 limb.ability = ability
-        limbs.append(limb)
+                add_child(ability)
+        limbs[limb.type] = limb
 
 func _process(delta: float) -> void:
     if Input.is_key_pressed(KEY_D):
@@ -29,6 +30,20 @@ func _process(delta: float) -> void:
         direction = 3
 
     if Input.is_action_just_pressed('e'):
-        limbs[3].ability.activate(direction)
+        if limbs[Limb.TYPE.ARM_RIGHT].ability != null:
+            limbs[Limb.TYPE.ARM_RIGHT].ability.activate(direction)
     elif Input.is_action_just_pressed('q'):
-        limbs[3].ability.activate(direction)
+        if limbs[Limb.TYPE.ARM_LEFT].ability != null:
+            limbs[Limb.TYPE.ARM_LEFT].ability.activate(direction)
+
+func hit(damage: int):
+    print("player is hurt by %d" % damage)
+    var limb : Limb = limbs[randi() % 4]
+    if limb.condition > 0:
+        limb.condition -= damage
+    
+
+
+
+
+
