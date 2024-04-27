@@ -57,7 +57,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 16.0
+"speed": 24.0
 }]
 
 [node name="Ability" type="Node"]
@@ -67,3 +67,5 @@ aoe_size = 200
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_efe4k")
 autoplay = "default"
+frame = 6
+frame_progress = 1.0

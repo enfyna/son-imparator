@@ -32,7 +32,7 @@ func _ready() -> void:
     sprite.hide()
 
 func activate(direction : int):
-    if is_attacking:
+    if is_attacking and active_attack != null:
         return
     
     if active_attack != null:
@@ -44,10 +44,10 @@ func activate(direction : int):
     rect.size = Vector2(aoe_size, aoe_size)
     col.shape = rect
     active_attack.add_child(col)
-    var sp : AnimatedSprite2D = sprite.duplicate()
+    var sp : AnimatedSprite2D = sprite.duplicate(0)
+    sp.animation_finished.connect(attack_end)
     sp.show()
     active_attack.add_child(sp)
-    sp.animation_finished.connect(attack_end)
     active_attack.body_entered.connect(_on_body_entered)
     parent.add_child(active_attack)
 
