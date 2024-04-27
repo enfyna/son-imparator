@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bie10qbnirict"]
+[gd_scene load_steps=4 format=3 uid="uid://bie10qbnirict"]
 
+[ext_resource type="Script" path="res://Entity/Collectible/Collectible.gd" id="1_mwprb"]
 [ext_resource type="Texture2D" uid="uid://c4jeax014q7ug" path="res://icon.svg" id="1_yes04"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7tbt"]
 size = Vector2(200, 200)
 
 [node name="Collectible" type="Area2D"]
+script = ExtResource("1_mwprb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_t7tbt")
@@ -14,7 +16,7 @@ shape = SubResource("RectangleShape2D_t7tbt")
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("1_yes04")
 
-[node name="Control" type="VBoxContainer" parent="."]
+[node name="Label" type="VBoxContainer" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -27,20 +29,23 @@ offset_bottom = -150.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Label"]
 layout_mode = 2
 bbcode_enabled = true
-text = "[color=green]'Sargı'[/color] almak ister misin?
+text = "[color=green]'%s'[/color] almak ister misin?
 
 [color=green]+25 sağlık"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Label"]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Label/HBoxContainer"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 texture = ExtResource("1_yes04")
 expand_mode = 4
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
