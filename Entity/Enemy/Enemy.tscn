@@ -1,12 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://jmv1ux02rl7l"]
+[gd_scene load_steps=8 format=3 uid="uid://jmv1ux02rl7l"]
 
 [ext_resource type="Script" path="res://Entity/Enemy/Enemy.gd" id="1_0aiib"]
+[ext_resource type="Texture2D" uid="uid://c4jeax014q7ug" path="res://icon.svg" id="2_hsm7t"]
+[ext_resource type="Script" path="res://Utils/Movement/Movement.gd" id="3_750jh"]
+[ext_resource type="Script" path="res://Utils/Input/EnemyMovementInput.gd" id="3_u1ap3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqey0"]
 size = Vector2(128, 128)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rf4so"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8dh7"]
+bg_color = Color(0.0184255, 0.728171, 3.85046e-07, 1)
+
 [node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_0aiib")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jqey0")
-script = ExtResource("1_0aiib")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("2_hsm7t")
+
+[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("input")]
+script = ExtResource("3_750jh")
+input = NodePath("EnemyMovementInput")
+
+[node name="EnemyMovementInput" type="Node" parent="Movement" node_paths=PackedStringArray("parent")]
+script = ExtResource("3_u1ap3")
+parent = NodePath("../..")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(128, 10)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -79.0
+offset_right = 64.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxEmpty_rf4so")
+theme_override_styles/fill = SubResource("StyleBoxFlat_v8dh7")
+step = 1.0
+value = 20.0
+show_percentage = false

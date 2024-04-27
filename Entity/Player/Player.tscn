@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsujvjmtm6rr6"]
+[gd_scene load_steps=6 format=3 uid="uid://dsujvjmtm6rr6"]
 
 [ext_resource type="Script" path="res://Entity/Player/Player.gd" id="1_sehdw"]
+[ext_resource type="Script" path="res://Utils/Movement/Movement.gd" id="2_oc1qh"]
+[ext_resource type="Script" path="res://Utils/Input/KeyboardMovementInput.gd" id="3_bum1e"]
+[ext_resource type="Texture2D" uid="uid://c4jeax014q7ug" path="res://icon.svg" id="3_i1ok4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_erior"]
 size = Vector2(128, 128)
@@ -10,3 +13,13 @@ script = ExtResource("1_sehdw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_erior")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_i1ok4")
+
+[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("input")]
+script = ExtResource("2_oc1qh")
+input = NodePath("KeyboardMovementInput")
+
+[node name="KeyboardMovementInput" type="Node" parent="Movement"]
+script = ExtResource("3_bum1e")
