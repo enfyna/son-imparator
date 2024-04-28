@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dme718i5y0tku"]
+[gd_scene load_steps=5 format=3 uid="uid://dme718i5y0tku"]
 
 [ext_resource type="Texture2D" uid="uid://wlbqr82406gk" path="res://Texture/end.png" id="1_q8bf0"]
 [ext_resource type="FontFile" uid="uid://q2xr34r7712n" path="res://Font/BigBlue_TerminalPlus.TTF" id="1_s5xdi"]
+[ext_resource type="Script" path="res://Menu/Results/Results.gd" id="2_y1s57"]
 
 [sub_resource type="Theme" id="Theme_8otj0"]
 default_font = ExtResource("1_s5xdi")
@@ -15,6 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_8otj0")
+script = ExtResource("2_y1s57")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -81,7 +83,11 @@ theme_override_constants/margin_bottom = 5
 [node name="Label2" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Dayandığın Süre: %d"
+text = "Dayandığın Süre: %d
+
+İmparatorluğun başarılı bir şekilde demokrasiye geçti!
+
+Hazırlayan: Ramazan Aslan"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -91,6 +97,13 @@ layout_mode = 2
 text = "Yeniden Oyna!
 "
 
+[node name="Button2" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Kapat"
+
 [node name="Control" type="Control" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[connection signal="pressed" from="HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

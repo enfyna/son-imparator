@@ -49,7 +49,6 @@ func _process(delta: float) -> void:
 func btn_confirmed(btn_name):
     if player == null:
         return
-    print(btn_name)
     player.give_item(item, btn_name)
     queue_free()
 

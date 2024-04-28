@@ -26,8 +26,10 @@ func _process(delta: float) -> void:
         if limb != null:
             life += limb.condition
     if life < 1:
-        var res = load("res://Menu/Results/Results.tscn")
-        get_tree().change_scene_to_packed(res)
+        var res = load("res://Menu/Results/Results.tscn").instantiate()
+        res.time = passed_time
+        get_node("/root").add_child(res)
+        queue_free()
 
     passed_time += delta
     if passed_time > 20:

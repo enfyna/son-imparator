@@ -27,7 +27,6 @@ func _ready() -> void:
     if sprite == null:
         sprite = get_node("AnimatedSprite2D")
     if sprite == null:
-        print("no sprite!")
         queue_free()
     sprite.hide()
 
@@ -66,7 +65,14 @@ func activate(direction : int):
     
     hit_something = false
     is_attacking = true
-    
+#    if type >= Ability.TYPE.RANGED_MULTI:
+#        set_process(true)
+#    else:
+#        set_process(false)
+
+#func _process(_delta: float) -> void:
+#    if active_attack:
+#        active_attack.position 
 
 func _on_body_entered(body:Node2D) -> void:
     if type % 2 == 0 and hit_something:

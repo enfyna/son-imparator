@@ -29,11 +29,15 @@ func die():
     if randi() % 50 > 10:
         const dir = "res://Entity/Item/Aid/"
         var aid_dir = DirAccess.get_files_at(dir)
-        col.item = load(dir + aid_dir[randi() % aid_dir.size()])
+        var pt = dir + aid_dir[randi() % aid_dir.size()]
+        pt = pt.trim_suffix(".remap")
+        col.item = load(pt)
     else:
         const dir = "res://Entity/Item/Limbs/Enemy_L1/"
         var limb_dir = DirAccess.get_files_at(dir)
-        col.item = load(dir + limb_dir[randi() % limb_dir.size()])
+        var pt = dir + limb_dir[randi() % limb_dir.size()]
+        pt = pt.trim_suffix(".remap")
+        col.item = load(pt)
     get_parent().call_deferred("add_child", col)
     call_deferred("queue_free")
 

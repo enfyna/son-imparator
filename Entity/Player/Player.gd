@@ -11,15 +11,15 @@ func _ready() -> void:
     const limb_path = 'res://Entity/Item/Limbs/Player/'
     var dir = DirAccess.open(limb_path)
     for limb_file in dir.get_files():
+        limb_file = limb_file.trim_suffix(".remap")
         var limb : Limb = load(limb_path + limb_file)
         if limb.ability_name.length() > 0:
             var ability_p = ability_path + "/" + limb.ability_name + ".tscn"
-            if FileAccess.file_exists(ability_p):
-                var ability : Ability = load(ability_p).instantiate()
-                ability.parent = self
-                ability.is_player = true
-                limb.ability = ability
-                add_child(ability)
+            var ability : Ability = load(ability_p).instantiate()
+            ability.parent = self
+            ability.is_player = true
+            limb.ability = ability
+            add_child(ability)
         limbs[limb.type] = limb
     sprite.play("default")
 
@@ -39,10 +39,10 @@ func _process(_delta: float) -> void:
         anim = "move_back"
     sprite.play(anim)
 
-    if Input.is_action_just_pressed('e'):
+    if Input.is_key_pressed(KEY_E):
         if limbs[Limb.TYPE.ARM_RIGHT].ability != null:
             limbs[Limb.TYPE.ARM_RIGHT].ability.activate(direction)
-    elif Input.is_action_just_pressed('q'):
+    elif Input.is_key_pressed(KEY_Q):
         if limbs[Limb.TYPE.ARM_LEFT].ability != null:
             limbs[Limb.TYPE.ARM_LEFT].ability.activate(direction)
 
