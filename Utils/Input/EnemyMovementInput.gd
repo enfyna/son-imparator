@@ -11,7 +11,7 @@ func get_input():
 	var pos = parent.position + Vector2(64, 64)
 	var tar = target.position + Vector2(64, 64)
 
-	if pos.distance_to(tar) > 200:
+	if pos.distance_to(tar) > 100:
 		val.x = clamp(tar.x - pos.x, -100, 100)
 		val.y = clamp(tar.y - pos.y, -100, 100) 
 

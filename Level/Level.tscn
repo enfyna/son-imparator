@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ceroww3ysgj0r"]
+[gd_scene load_steps=11 format=3 uid="uid://ceroww3ysgj0r"]
 
 [ext_resource type="Script" path="res://Level/Level.gd" id="1_5lyyn"]
 [ext_resource type="Script" path="res://Level/LimbHUD.gd" id="1_oeecq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bmv2efcd3hdyc" path="res://Texture/Player/Limbs/b1.png" id="4_6gkvj"]
 [ext_resource type="Texture2D" uid="uid://b5elooauin8xh" path="res://Texture/Player/Limbs/sol_kol.png" id="5_7p78i"]
 [ext_resource type="Texture2D" uid="uid://eigqr5r573d2" path="res://Texture/Player/Limbs/sag_kol.png" id="6_7yv5e"]
+[ext_resource type="Texture2D" uid="uid://88j8bflbf18b" path="res://Texture/Cross.png" id="8_6rpma"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1s8se"]
 size = Vector2(1656, 23.9747)
@@ -65,56 +66,6 @@ rotation = 1.57079
 position = Vector2(296.003, -1464)
 shape = SubResource("RectangleShape2D_1s8se")
 
-[node name="TopCenter" type="CanvasLayer" parent="."]
-
-[node name="MarginContainer" type="MarginContainer" parent="TopCenter"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -191.0
-offset_right = 191.0
-offset_bottom = 87.0
-grow_horizontal = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Panel" type="PanelContainer" parent="TopCenter/MarginContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TopCenter/MarginContainer/Panel"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="TopCenter/MarginContainer/Panel/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TopCenter/MarginContainer/Panel/HBoxContainer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TopCenter/MarginContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="TopCenter/MarginContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "İç Organlar
-"
-horizontal_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="TopCenter/MarginContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(250, 20)
-layout_mode = 2
-value = 70.0
-show_percentage = false
-
 [node name="BottomLeft" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("1_oeecq")
 player = NodePath("../Player")
@@ -141,6 +92,15 @@ layout_mode = 2
 texture = ExtResource("3_argg5")
 expand_mode = 2
 stretch_mode = 4
+
+[node name="Cross" type="TextureRect" parent="BottomLeft/MarginContainer/Panel/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_6rpma")
 
 [node name="MarginContainer" type="MarginContainer" parent="BottomLeft/MarginContainer/Panel/HBoxContainer"]
 layout_mode = 2
@@ -242,6 +202,15 @@ texture = ExtResource("4_6gkvj")
 expand_mode = 2
 stretch_mode = 4
 
+[node name="Cross" type="TextureRect" parent="BottomRight/MarginContainer/Panel/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_6rpma")
+
 [node name="TopLeft" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("1_oeecq")
 player = NodePath("../Player")
@@ -266,6 +235,15 @@ layout_mode = 2
 texture = ExtResource("5_7p78i")
 expand_mode = 2
 stretch_mode = 4
+
+[node name="Cross" type="TextureRect" parent="TopLeft/MarginContainer/Panel/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_6rpma")
 
 [node name="MarginContainer" type="MarginContainer" parent="TopLeft/MarginContainer/Panel/HBoxContainer"]
 layout_mode = 2
@@ -364,9 +342,20 @@ texture = ExtResource("6_7yv5e")
 expand_mode = 2
 stretch_mode = 4
 
+[node name="Cross" type="TextureRect" parent="TopRight/MarginContainer/Panel/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_6rpma")
+
 [node name="Player" parent="." instance=ExtResource("1_vihaq")]
 position = Vector2(168, 528)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
+
+[node name="Enemies" type="Node2D" parent="."]

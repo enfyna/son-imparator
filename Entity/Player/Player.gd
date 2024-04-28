@@ -49,7 +49,7 @@ func _process(_delta: float) -> void:
 func hit(damage: int):
     var limb : Limb = limbs[randi() % 4]
     if limb.condition > 0:
-        limb.condition -= damage
+        limb.hit(damage)
         if limb.type >= Limb.TYPE.LEG_LEFT:
             leg_speed = (limbs[Limb.TYPE.LEG_LEFT].condition + limbs[Limb.TYPE.LEG_RIGHT].condition) / 200.0
     
@@ -69,15 +69,17 @@ func give_item(item: Item, btn_name: String):
         limbs[item.type] = item
 
     elif item is Aid:
-        if item.type == Aid.TYPE.ALL:
-            var limb = limbs[Limb.TYPE.get(btn_name)]
-            limb.condition += item.amount
-        elif item.type == Aid.TYPE.ORGAN:
+        if item.type == Aid.TYPE.ORGAN:
 
             pass
-        else:
+        elif item.type == Aid.TYPE.ALL:
             var limb = limbs[Limb.TYPE.get(btn_name)]
-            limb.condition += item.amount
+            if limb.condition > 0:
+                limb.hit(-item.amount)
+            else:
+                for lm in limbs.values():
+                    if lm != null and lm.condition > 0:
+                        lm.hit(-item.amount)
         leg_speed = (limbs[Limb.TYPE.LEG_LEFT].condition + limbs[Limb.TYPE.LEG_RIGHT].condition) / 200.0
 
 

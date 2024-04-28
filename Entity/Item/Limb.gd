@@ -14,7 +14,17 @@ enum TYPE{
 
 var ability : Ability
 
+func hit(damage:int):
+    if condition >= 0:
+        condition -= damage
+        if condition > 100:
+            condition = 100
+    if condition <= 0:
+        if ability != null:
+            ability.queue_free()
+
 func remove():
     if ability != null:
-        ability.queue_free()
+        ability.remove()
+        ability.call_deferred("queue_free")
 
