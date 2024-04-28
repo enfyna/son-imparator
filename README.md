@@ -11,10 +11,7 @@
 </p>
 
 <h1>Hikaye</h1>
-Oyunda bir öğrenciye özel dersler vererek cevapladığımız her doğru soru için puan kazanıyoruz. 
-Üst üste doğru soru cevapladığımızda akış hali seviyemiz artıyor ve cevapladığımız sorulardan daha fazla puan kazanabiliyoruz.
-Ama dersi çok uzun tutarsak öğrencinin ders çalışma motivasyonu azalıyor ve dersi dinlememeye başlıyor. Bu yüzden dersi arada 
-sonlandırıp öğrencinin motivasyonunu yenilememiz gerekiyor. Süremiz dolduğunda toplam puanımız 100'ü geçerse oyunu kazanmış oluyoruz.
+Oyunda imparatorluk tahtımızda otururken ordunun ansızın bir darbe girişiminde bulunmak için saraya baskın düzenlediğini öğreniriz. Tek çare kendimizi ve tahtımızı korumaktır.
 
 <h1>Ekran Görüntüleri</h1>
 <p align="center">
