@@ -60,12 +60,11 @@ func give_item(item: Item, btn_name: String):
 
         if item.ability_name.length() > 0:
             var ability_p = ability_path + "/" + item.ability_name + ".tscn"
-            if FileAccess.file_exists(ability_p):
-                var ability : Ability = load(ability_p).instantiate()
-                ability.parent = self
-                ability.is_player = true
-                item.ability = ability
-                add_child(ability)
+            var ability : Ability = load(ability_p).instantiate()
+            ability.parent = self
+            ability.is_player = true
+            item.ability = ability
+            add_child(ability)
         limbs[item.type] = item
 
     elif item is Aid:
