@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_10d5j")
-type = 0
+type = 5
 amount = 70
 randomize_type = true
 item_name = &"Elastic Bandage"
-item_rarity = 1
+item_rarity = 2

@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_vwrt1")
 type = 2
+ability_name = &""
 is_mech = false
-condition = 90
+condition = 50
 item_name = &"Left Leg"
 item_rarity = 2

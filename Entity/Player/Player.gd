@@ -1,12 +1,14 @@
 class_name Player extends CharacterBody2D
 
+const ability_path = 'res://Entity/Ability/Default'
+
+var leg_speed : float = 1.0
 var limbs : Dictionary = {}
 var direction : int = 0
 @onready var sprite : AnimatedSprite2D = $Sprite2D
 
 func _ready() -> void:
     const limb_path = 'res://Entity/Item/Limbs/Player/'
-    const ability_path = 'res://Entity/Ability/Default'
     var dir = DirAccess.open(limb_path)
     for limb_file in dir.get_files():
         var limb : Limb = load(limb_path + limb_file)
@@ -48,12 +50,34 @@ func hit(damage: int):
     var limb : Limb = limbs[randi() % 4]
     if limb.condition > 0:
         limb.condition -= damage
+        if limb.type >= Limb.TYPE.LEG_LEFT:
+            leg_speed = (limbs[Limb.TYPE.LEG_LEFT].condition + limbs[Limb.TYPE.LEG_RIGHT].condition) / 200.0
     
-func give_item(item: Item):
+func give_item(item: Item, btn_name: String):
     if item is Limb:
-        pass
+        var current_limb = limbs[item.type]
+        current_limb.remove()
+
+        if item.ability_name.length() > 0:
+            var ability_p = ability_path + "/" + item.ability_name + ".tscn"
+            if FileAccess.file_exists(ability_p):
+                var ability : Ability = load(ability_p).instantiate()
+                ability.parent = self
+                ability.is_player = true
+                item.ability = ability
+                add_child(ability)
+        limbs[item.type] = item
+
     elif item is Aid:
-        pass
+        if item.type == Aid.TYPE.ALL:
+            var limb = limbs[Limb.TYPE.get(btn_name)]
+            limb.condition += item.amount
+        elif item.type == Aid.TYPE.ORGAN:
+
+            pass
+        else:
+            var limb = limbs[Limb.TYPE.get(btn_name)]
+            limb.condition += item.amount
 
 
 

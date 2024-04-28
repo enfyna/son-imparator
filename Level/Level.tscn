@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ceroww3ysgj0r"]
+[gd_scene load_steps=23 format=3 uid="uid://ceroww3ysgj0r"]
 
 [ext_resource type="Script" path="res://Level/LimbHUD.gd" id="1_oeecq"]
 [ext_resource type="Texture2D" uid="uid://gkhirdy8nk37" path="res://Texture/Background/bg2.png" id="1_tn4im"]
@@ -7,14 +7,22 @@
 [ext_resource type="Texture2D" uid="uid://bcpqrnb1sthpq" path="res://Texture/Player/Limbs/b2.png" id="3_argg5"]
 [ext_resource type="PackedScene" uid="uid://bie10qbnirict" path="res://Entity/Collectible/Collectible.tscn" id="3_g5hmi"]
 [ext_resource type="Texture2D" uid="uid://bmv2efcd3hdyc" path="res://Texture/Player/Limbs/b1.png" id="4_6gkvj"]
-[ext_resource type="Resource" uid="uid://i11pi1s2cmnl" path="res://Entity/Item/Limbs/Player/LegLeft.tres" id="4_lq2qm"]
 [ext_resource type="Texture2D" uid="uid://b5elooauin8xh" path="res://Texture/Player/Limbs/sol_kol.png" id="5_7p78i"]
 [ext_resource type="Script" path="res://Entity/Ability/Ability.gd" id="5_15y1t"]
 [ext_resource type="Texture2D" uid="uid://eigqr5r573d2" path="res://Texture/Player/Limbs/sag_kol.png" id="6_7yv5e"]
 [ext_resource type="Texture2D" uid="uid://dp3dw0eo1rbqd" path="res://Texture/Ability/BasicSword/spritesheet.png" id="6_xsjgb"]
+[ext_resource type="Script" path="res://Entity/Item/Aid.gd" id="8_lt7nc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1s8se"]
 size = Vector2(1656, 23.9747)
+
+[sub_resource type="Resource" id="Resource_dtqf5"]
+script = ExtResource("8_lt7nc")
+type = 4
+amount = 20
+randomize_type = false
+item_name = &"Sargı Bezi"
+item_rarity = 0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b3ttc"]
 atlas = ExtResource("6_xsjgb")
@@ -369,7 +377,7 @@ stretch_mode = 4
 
 [node name="Collectible" parent="." instance=ExtResource("3_g5hmi")]
 position = Vector2(248, 480)
-item = ExtResource("4_lq2qm")
+item = SubResource("Resource_dtqf5")
 
 [node name="Player" parent="." instance=ExtResource("1_vihaq")]
 position = Vector2(168, 528)

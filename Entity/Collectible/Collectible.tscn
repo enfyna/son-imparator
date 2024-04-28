@@ -31,6 +31,7 @@ size_flags_vertical = 3
 
 [node name="Label" type="VBoxContainer" parent="Control"]
 layout_mode = 2
+alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/Label"]
 layout_mode = 2

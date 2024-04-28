@@ -13,3 +13,8 @@ enum TYPE{
 @export var condition : int = 90
 
 var ability : Ability
+
+func remove():
+    if ability != null:
+        ability.queue_free()
+

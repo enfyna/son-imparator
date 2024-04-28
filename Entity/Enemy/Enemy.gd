@@ -6,6 +6,7 @@ class_name Enemy extends CharacterBody2D
 @onready var health_bar : ProgressBar = $HealthBar
 @onready var sprite : AnimatedSprite2D = $Sprite2D
 
+var leg_speed : float = 1.0
 var direction : int
 
 func _ready() -> void:

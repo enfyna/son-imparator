@@ -8,13 +8,15 @@ var label : VBoxContainer
 func _ready() -> void:
     if item == null:
         queue_free()
+    var sp = get_node("Sprite2D")
+    sp.texture = item.item_sprite
     panel = get_node("Control")
     label = panel.get_node("Label")
     var t : RichTextLabel = label.get_node("RichTextLabel")
     var limb_btns : HBoxContainer = label.get_node("LimbButtons")
     var aid_btns : HBoxContainer = label.get_node("AidButtons")
     if item is Limb:
-        t.text = t.text % [item.item_name, Limb.TYPE.keys()[item.type], item.condition]
+        t.text = t.text % [item.item_name, item.ability_name, item.condition]
         aid_btns.hide()
         for btn in limb_btns.get_children():
             if Limb.TYPE[btn.name] != item.type:
@@ -23,14 +25,24 @@ func _ready() -> void:
                 btn.pressed.connect(btn_confirmed.bind(btn.name))
     if item is Aid:
         t.text = t.text % [item.item_name, item.item_rarity, item.amount]
-        limb_btns.hide()
+        if item.type == Aid.TYPE.ORGAN:
+            limb_btns.hide()
+            for btn in aid_btns.get_children():
+                btn.pressed.connect(btn_confirmed.bind(btn.name))
+        else:
+            aid_btns.hide()
+            for btn in limb_btns.get_children():
+                if item.type == Aid.TYPE.ALL or Limb.TYPE[btn.name] == item.type:
+                    btn.pressed.connect(btn_confirmed.bind(btn.name))
+                else:
+                    btn.hide()
     panel.hide()
 
 func btn_confirmed(btn_name):
     if player == null:
         return
     print(btn_name)
-    player.give_item(item)
+    player.give_item(item, btn_name)
     queue_free()
     
 
