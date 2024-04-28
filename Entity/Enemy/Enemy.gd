@@ -41,6 +41,6 @@ func _process(delta: float) -> void:
 
     sprite.play(anim)
 
-    if ability.type < 2:
+    if ability and ability.type < 2:
         if position.distance_to(target.position) < 180:
             ability.activate(direction)

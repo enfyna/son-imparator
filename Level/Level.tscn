@@ -1,17 +1,20 @@
-[gd_scene load_steps=19 format=3 uid="uid://ceroww3ysgj0r"]
+[gd_scene load_steps=22 format=3 uid="uid://ceroww3ysgj0r"]
 
 [ext_resource type="Script" path="res://Level/LimbHUD.gd" id="1_oeecq"]
-[ext_resource type="Texture2D" uid="uid://c4jeax014q7ug" path="res://icon.svg" id="1_oy1kb"]
 [ext_resource type="Texture2D" uid="uid://gkhirdy8nk37" path="res://Texture/Background/bg2.png" id="1_tn4im"]
 [ext_resource type="PackedScene" uid="uid://dsujvjmtm6rr6" path="res://Entity/Player/Player.tscn" id="1_vihaq"]
 [ext_resource type="PackedScene" uid="uid://jmv1ux02rl7l" path="res://Entity/Enemy/Enemy.tscn" id="2_alqm1"]
+[ext_resource type="Texture2D" uid="uid://bcpqrnb1sthpq" path="res://Texture/Player/Limbs/b2.png" id="3_argg5"]
 [ext_resource type="PackedScene" uid="uid://bie10qbnirict" path="res://Entity/Collectible/Collectible.tscn" id="3_g5hmi"]
+[ext_resource type="Texture2D" uid="uid://bmv2efcd3hdyc" path="res://Texture/Player/Limbs/b1.png" id="4_6gkvj"]
 [ext_resource type="Resource" uid="uid://i11pi1s2cmnl" path="res://Entity/Item/Limbs/Player/LegLeft.tres" id="4_lq2qm"]
+[ext_resource type="Texture2D" uid="uid://b5elooauin8xh" path="res://Texture/Player/Limbs/sol_kol.png" id="5_7p78i"]
 [ext_resource type="Script" path="res://Entity/Ability/Ability.gd" id="5_15y1t"]
+[ext_resource type="Texture2D" uid="uid://eigqr5r573d2" path="res://Texture/Player/Limbs/sag_kol.png" id="6_7yv5e"]
 [ext_resource type="Texture2D" uid="uid://dp3dw0eo1rbqd" path="res://Texture/Ability/BasicSword/spritesheet.png" id="6_xsjgb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1s8se"]
-size = Vector2(3000, 100)
+size = Vector2(1656, 23.9747)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b3ttc"]
 atlas = ExtResource("6_xsjgb")
@@ -77,7 +80,7 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_top = -152.0
 offset_right = 1568.0
-offset_bottom = 728.0
+offset_bottom = 888.0
 grow_vertical = 2
 texture = ExtResource("1_tn4im")
 expand_mode = 1
@@ -87,14 +90,14 @@ stretch_mode = 4
 position = Vector2(-48, 880)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/StaticBody2D"]
-position = Vector2(192, 48)
+position = Vector2(856, 16)
 shape = SubResource("RectangleShape2D_1s8se")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="TextureRect"]
 position = Vector2(736, 1984)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/StaticBody2D2"]
-position = Vector2(168.003, -1472)
+position = Vector2(64, -1432)
 shape = SubResource("RectangleShape2D_1s8se")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="TextureRect"]
@@ -102,7 +105,7 @@ position = Vector2(2456, 568)
 rotation = 3.14467
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/StaticBody2D3"]
-position = Vector2(1464.19, 59.491)
+position = Vector2(1439.77, -76.4345)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_1s8se")
 one_way_collision = true
@@ -138,7 +141,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="BottomLeft/MarginContainer/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(50, 25)
 layout_mode = 2
-texture = ExtResource("1_oy1kb")
+texture = ExtResource("3_argg5")
 expand_mode = 2
 stretch_mode = 4
 
@@ -238,7 +241,7 @@ show_percentage = false
 [node name="TextureRect" type="TextureRect" parent="BottomRight/MarginContainer/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(50, 25)
 layout_mode = 2
-texture = ExtResource("1_oy1kb")
+texture = ExtResource("4_6gkvj")
 expand_mode = 2
 stretch_mode = 4
 
@@ -263,7 +266,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="TopLeft/MarginContainer/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(50, 25)
 layout_mode = 2
-texture = ExtResource("1_oy1kb")
+texture = ExtResource("5_7p78i")
 expand_mode = 2
 stretch_mode = 4
 
@@ -360,7 +363,7 @@ show_percentage = false
 [node name="TextureRect" type="TextureRect" parent="TopRight/MarginContainer/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(50, 25)
 layout_mode = 2
-texture = ExtResource("1_oy1kb")
+texture = ExtResource("6_7yv5e")
 expand_mode = 2
 stretch_mode = 4
 
@@ -387,6 +390,22 @@ aoe_size = 128
 sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy/Ability"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_gd8uw")
+autoplay = "default"
+
+[node name="Enemy2" parent="." node_paths=PackedStringArray("target", "ability") instance=ExtResource("2_alqm1")]
+position = Vector2(1392, 616)
+target = NodePath("../Player")
+health = 50
+ability = NodePath("Ability")
+
+[node name="Ability" type="Node" parent="Enemy2" node_paths=PackedStringArray("sprite")]
+script = ExtResource("5_15y1t")
+aoe_size = 128
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy2/Ability"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_gd8uw")
 autoplay = "default"

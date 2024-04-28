@@ -21,7 +21,7 @@ func _ready() -> void:
         limbs[limb.type] = limb
     sprite.play("default")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     var anim : String = "default"
     if Input.is_key_pressed(KEY_D):
         direction = 0
@@ -45,12 +45,15 @@ func _process(delta: float) -> void:
             limbs[Limb.TYPE.ARM_LEFT].ability.activate(direction)
 
 func hit(damage: int):
-    print("player is hurt by %d" % damage)
     var limb : Limb = limbs[randi() % 4]
     if limb.condition > 0:
         limb.condition -= damage
     
-
+func give_item(item: Item):
+    if item is Limb:
+        pass
+    elif item is Aid:
+        pass
 
 
 

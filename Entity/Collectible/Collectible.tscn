@@ -16,20 +16,23 @@ shape = SubResource("RectangleShape2D_t7tbt")
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("1_yes04")
 
-[node name="Label" type="VBoxContainer" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="Control" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -125.0
-offset_top = -300.0
-offset_right = 125.0
-offset_bottom = -150.0
+offset_left = -152.0
+offset_top = -250.0
+offset_right = 152.0
+offset_bottom = -88.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Label"]
+[node name="Label" type="VBoxContainer" parent="Control"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Label"]
 layout_mode = 2
 bbcode_enabled = true
 text = "[center][color=green]'%s'[/color] almak ister misin?
@@ -38,33 +41,33 @@ text = "[center][color=green]'%s'[/color] almak ister misin?
 [color=green]%%%s"
 fit_content = true
 
-[node name="AidButtons" type="HBoxContainer" parent="Label"]
+[node name="AidButtons" type="HBoxContainer" parent="Control/Label"]
 layout_mode = 2
 alignment = 1
 
-[node name="Confirm" type="Button" parent="Label/AidButtons"]
+[node name="Confirm" type="Button" parent="Control/Label/AidButtons"]
 layout_mode = 2
 text = "Al"
 
-[node name="LimbButtons" type="HBoxContainer" parent="Label"]
+[node name="LimbButtons" type="HBoxContainer" parent="Control/Label"]
 layout_mode = 2
 alignment = 1
 
-[node name="ARM_LEFT" type="Button" parent="Label/LimbButtons"]
+[node name="ARM_LEFT" type="Button" parent="Control/Label/LimbButtons"]
 layout_mode = 2
 text = "Sol Kol"
 
-[node name="ARM_RIGHT" type="Button" parent="Label/LimbButtons"]
+[node name="ARM_RIGHT" type="Button" parent="Control/Label/LimbButtons"]
 layout_mode = 2
 text = "Sağ Kol
 "
 
-[node name="LEG_LEFT" type="Button" parent="Label/LimbButtons"]
+[node name="LEG_LEFT" type="Button" parent="Control/Label/LimbButtons"]
 layout_mode = 2
 text = "Sol Bacak
 "
 
-[node name="LEG_RIGHT" type="Button" parent="Label/LimbButtons"]
+[node name="LEG_RIGHT" type="Button" parent="Control/Label/LimbButtons"]
 layout_mode = 2
 text = "Sağ Bacak
 "
