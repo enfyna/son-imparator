@@ -19,9 +19,24 @@ func hit(damage:int):
     health_bar.value = health
 
 func die():
-    queue_free()
+    if randi() % 75 > 50:
+        queue_free()
 
-func _process(delta: float) -> void:
+    var col = load("res://Entity/Collectible/Collectible.tscn").instantiate()
+    col.position = position
+
+    if randi() % 50 > 40:
+        const dir = "res://Entity/Item/Aid/"
+        var aid_dir = DirAccess.get_files_at(dir)
+        col.item = load(dir + aid_dir[randi() % aid_dir.size()])
+    else:
+        const dir = "res://Entity/Item/Limbs/Enemy_L1/"
+        var limb_dir = DirAccess.get_files_at(dir)
+        col.item = load(dir + limb_dir[randi() % limb_dir.size()])
+    get_parent().add_child(col)
+    call_deferred("queue_free")
+
+func _process(_delta: float) -> void:
     var anim : String = "default"
     var dif_x = target.position.x - position.x
     var dif_y = target.position.y - position.y

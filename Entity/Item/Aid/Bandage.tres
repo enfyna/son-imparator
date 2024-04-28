@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Aid" load_steps=2 format=3 uid="uid://gd6m31mmcos5"]
+[gd_resource type="Resource" script_class="Aid" load_steps=3 format=3 uid="uid://gd6m31mmcos5"]
 
 [ext_resource type="Script" path="res://Entity/Item/Aid.gd" id="1_af4ko"]
+[ext_resource type="Texture2D" uid="uid://3h2pt737mwra" path="res://Texture/Item/Aid/Bandage.png" id="1_qirhe"]
 
 [resource]
 script = ExtResource("1_af4ko")
@@ -8,4 +9,5 @@ type = 5
 amount = 20
 randomize_type = false
 item_name = &"Bandage"
+item_sprite = ExtResource("1_qirhe")
 item_rarity = 0

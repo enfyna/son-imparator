@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Aid" load_steps=2 format=3 uid="uid://cqg2lxfnhalt3"]
+[gd_resource type="Resource" script_class="Aid" load_steps=3 format=3 uid="uid://cqg2lxfnhalt3"]
 
+[ext_resource type="Texture2D" uid="uid://ddapfmvua6iwc" path="res://Texture/Item/Aid/BandageTape.png" id="1_5wq5d"]
 [ext_resource type="Script" path="res://Entity/Item/Aid.gd" id="1_ejtct"]
 
 [resource]
@@ -8,4 +9,5 @@ type = 5
 amount = 50
 randomize_type = true
 item_name = &"Bandage Tape"
+item_sprite = ExtResource("1_5wq5d")
 item_rarity = 1

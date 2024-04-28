@@ -1,6 +1,8 @@
 class_name Collectible extends Area2D
 
 @export var item : Item
+var timer
+var alpha : float = 1.0
 var player : Player 
 var panel : PanelContainer
 var label : VBoxContainer
@@ -36,7 +38,13 @@ func _ready() -> void:
                     btn.pressed.connect(btn_confirmed.bind(btn.name))
                 else:
                     btn.hide()
+    timer = get_tree().create_timer(10)
+    timer.timeout.connect(queue_free)
     panel.hide()
+
+func _process(delta: float) -> void:
+    alpha -= delta / 10
+    modulate = Color(1, 1, 1, alpha)
 
 func btn_confirmed(btn_name):
     if player == null:
@@ -44,7 +52,6 @@ func btn_confirmed(btn_name):
     print(btn_name)
     player.give_item(item, btn_name)
     queue_free()
-    
 
 func _on_body_entered(body:Node2D) -> void:
     if not body is Player:

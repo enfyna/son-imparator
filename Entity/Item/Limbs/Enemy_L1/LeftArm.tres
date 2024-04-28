@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="Limb" load_steps=2 format=3 uid="uid://chqbwhem12a7m"]
+[gd_resource type="Resource" script_class="Limb" load_steps=3 format=3 uid="uid://chqbwhem12a7m"]
 
 [ext_resource type="Script" path="res://Entity/Item/Limb.gd" id="1_2x8a7"]
+[ext_resource type="Texture2D" uid="uid://b5elooauin8xh" path="res://Texture/Player/Limbs/sol_kol.png" id="1_7q1x0"]
 
 [resource]
 script = ExtResource("1_2x8a7")
 type = 0
+ability_name = &""
 is_mech = false
-condition = 90
+condition = 80
 item_name = &"Left Arm"
-item_rarity = 2
+item_sprite = ExtResource("1_7q1x0")
+item_rarity = 0

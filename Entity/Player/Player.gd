@@ -78,6 +78,7 @@ func give_item(item: Item, btn_name: String):
         else:
             var limb = limbs[Limb.TYPE.get(btn_name)]
             limb.condition += item.amount
+        leg_speed = (limbs[Limb.TYPE.LEG_LEFT].condition + limbs[Limb.TYPE.LEG_RIGHT].condition) / 200.0
 
 
 
