@@ -13,7 +13,7 @@ var player : Player
 
 var basic_hit = "res://Entity/Ability/Default/BasicSwordHit.tscn"
 var normal_hit = "res://Entity/Ability/Default/SwordHit.tscn"
-var ulti_hit = "res://Entity/Ability/Default/UltiSwordHit.tscn"
+var ulti_hit = "res://Entity/Ability/Default/UltimateSwordHit.tscn"
 
 func _ready() -> void:
     player = get_node("Player")
@@ -21,6 +21,14 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+    var life = 0.0
+    for limb in player.limbs.values():
+        if limb != null:
+            life += limb.condition
+    if life < 1:
+        var res = load("res://Menu/Results/Results.tscn")
+        get_tree().change_scene_to_packed(res)
+
     passed_time += delta
     if passed_time > 20:
         diff = 2
