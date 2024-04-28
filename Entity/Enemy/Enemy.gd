@@ -11,6 +11,7 @@ var direction : int
 
 func _ready() -> void:
     health_bar.value = health
+    add_child(ability)
 
 func hit(damage:int):
     health -= damage
@@ -25,7 +26,7 @@ func die():
     var col = load("res://Entity/Collectible/Collectible.tscn").instantiate()
     col.position = position
 
-    if randi() % 50 > 40:
+    if randi() % 50 > 10:
         const dir = "res://Entity/Item/Aid/"
         var aid_dir = DirAccess.get_files_at(dir)
         col.item = load(dir + aid_dir[randi() % aid_dir.size()])
@@ -33,7 +34,7 @@ func die():
         const dir = "res://Entity/Item/Limbs/Enemy_L1/"
         var limb_dir = DirAccess.get_files_at(dir)
         col.item = load(dir + limb_dir[randi() % limb_dir.size()])
-    get_parent().add_child(col)
+    get_parent().call_deferred("add_child", col)
     call_deferred("queue_free")
 
 func _process(_delta: float) -> void:

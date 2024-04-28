@@ -144,6 +144,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.8, 0.8)
 platform_floor_layers = 4278190080
 script = ExtResource("1_sehdw")
 

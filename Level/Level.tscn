@@ -1,79 +1,26 @@
-[gd_scene load_steps=21 format=3 uid="uid://ceroww3ysgj0r"]
+[gd_scene load_steps=10 format=3 uid="uid://ceroww3ysgj0r"]
 
 [ext_resource type="Script" path="res://Level/Level.gd" id="1_5lyyn"]
 [ext_resource type="Script" path="res://Level/LimbHUD.gd" id="1_oeecq"]
 [ext_resource type="Texture2D" uid="uid://gkhirdy8nk37" path="res://Texture/Background/bg2.png" id="1_tn4im"]
 [ext_resource type="PackedScene" uid="uid://dsujvjmtm6rr6" path="res://Entity/Player/Player.tscn" id="1_vihaq"]
-[ext_resource type="PackedScene" uid="uid://jmv1ux02rl7l" path="res://Entity/Enemy/Enemy.tscn" id="2_alqm1"]
 [ext_resource type="Texture2D" uid="uid://bcpqrnb1sthpq" path="res://Texture/Player/Limbs/b2.png" id="3_argg5"]
 [ext_resource type="Texture2D" uid="uid://bmv2efcd3hdyc" path="res://Texture/Player/Limbs/b1.png" id="4_6gkvj"]
 [ext_resource type="Texture2D" uid="uid://b5elooauin8xh" path="res://Texture/Player/Limbs/sol_kol.png" id="5_7p78i"]
-[ext_resource type="Script" path="res://Entity/Ability/Ability.gd" id="5_15y1t"]
 [ext_resource type="Texture2D" uid="uid://eigqr5r573d2" path="res://Texture/Player/Limbs/sag_kol.png" id="6_7yv5e"]
-[ext_resource type="Texture2D" uid="uid://dp3dw0eo1rbqd" path="res://Texture/Ability/BasicSword/spritesheet.png" id="6_xsjgb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1s8se"]
 size = Vector2(1656, 23.9747)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b3ttc"]
-atlas = ExtResource("6_xsjgb")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ba8y"]
-atlas = ExtResource("6_xsjgb")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_irq25"]
-atlas = ExtResource("6_xsjgb")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8udve"]
-atlas = ExtResource("6_xsjgb")
-region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7j815"]
-atlas = ExtResource("6_xsjgb")
-region = Rect2(512, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b1lym"]
-atlas = ExtResource("6_xsjgb")
-region = Rect2(640, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8edw3"]
-atlas = ExtResource("6_xsjgb")
-region = Rect2(768, 0, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_gd8uw"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b3ttc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ba8y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_irq25")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8udve")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7j815")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b1lym")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8edw3")
-}],
-"loop": false,
-"name": &"default",
-"speed": 24.0
-}]
-
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("EnemySpawnLoc")]
 script = ExtResource("1_5lyyn")
+EnemySpawnLoc = [NodePath("Marker2D"), NodePath("Marker2D2")]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(1392, 496)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(1400, 648)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 9
@@ -423,35 +370,3 @@ position = Vector2(168, 528)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
-
-[node name="Enemy" parent="." node_paths=PackedStringArray("target", "ability") instance=ExtResource("2_alqm1")]
-position = Vector2(1392, 488)
-target = NodePath("../Player")
-health = 50
-ability = NodePath("Ability")
-
-[node name="Ability" type="Node" parent="Enemy" node_paths=PackedStringArray("sprite")]
-script = ExtResource("5_15y1t")
-aoe_size = 128
-sprite = NodePath("AnimatedSprite2D")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy/Ability"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_gd8uw")
-autoplay = "default"
-
-[node name="Enemy2" parent="." node_paths=PackedStringArray("target", "ability") instance=ExtResource("2_alqm1")]
-position = Vector2(1392, 648)
-target = NodePath("../Player")
-health = 50
-ability = NodePath("Ability")
-
-[node name="Ability" type="Node" parent="Enemy2" node_paths=PackedStringArray("sprite")]
-script = ExtResource("5_15y1t")
-aoe_size = 128
-sprite = NodePath("AnimatedSprite2D")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy2/Ability"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_gd8uw")
-autoplay = "default"

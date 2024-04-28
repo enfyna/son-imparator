@@ -149,8 +149,10 @@ animations = [{
 bg_color = Color(0.0184255, 0.728171, 3.85046e-07, 1)
 
 [node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(0.7, 0.7)
 platform_floor_layers = 4278190080
 script = ExtResource("1_0aiib")
+health = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jqey0")

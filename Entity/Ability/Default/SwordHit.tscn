@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://tlvgs65sqib6"]
+
+[ext_resource type="Script" path="res://Entity/Ability/Ability.gd" id="1_oghtp"]
+[ext_resource type="Texture2D" uid="uid://dp3dw0eo1rbqd" path="res://Texture/Ability/BasicSword/spritesheet.png" id="2_7n2sb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6uoh"]
+atlas = ExtResource("2_7n2sb")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rtqh"]
+atlas = ExtResource("2_7n2sb")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6h04"]
+atlas = ExtResource("2_7n2sb")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwfv5"]
+atlas = ExtResource("2_7n2sb")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8i53"]
+atlas = ExtResource("2_7n2sb")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwq7c"]
+atlas = ExtResource("2_7n2sb")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr7b5"]
+atlas = ExtResource("2_7n2sb")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efe4k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6uoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rtqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6h04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwfv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8i53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwq7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr7b5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="Ability" type="Node"]
+script = ExtResource("1_oghtp")
+cooldown = 0.7
+damage = 30
+aoe_size = 200
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.595992, 1, 0.998431, 1)
+sprite_frames = SubResource("SpriteFrames_efe4k")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
