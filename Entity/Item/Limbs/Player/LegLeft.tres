@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Entity/Item/Limb.gd" id="1_vwrt1"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_vwrt1")
 type = 2
 ability_name = &""

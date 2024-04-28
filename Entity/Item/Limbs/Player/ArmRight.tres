@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Entity/Item/Limb.gd" id="1_7waxd"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_7waxd")
 type = 1
 ability_name = &"BasicSwordHit"

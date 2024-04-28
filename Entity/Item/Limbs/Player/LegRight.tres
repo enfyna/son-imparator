@@ -3,10 +3,11 @@
 [ext_resource type="Script" path="res://Entity/Item/Limb.gd" id="1_k78rp"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_k78rp")
 type = 3
 ability_name = &""
 is_mech = false
-condition = null
+condition = 90
 item_name = &"Right Leg"
 item_rarity = 2

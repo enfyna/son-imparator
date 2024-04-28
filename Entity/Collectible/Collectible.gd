@@ -1,6 +1,7 @@
 class_name Collectible extends Area2D
 
 @export var item : Item
+var audio
 var timer
 var alpha : float = 1.0
 var player : Player 
@@ -12,10 +13,12 @@ func _ready() -> void:
         queue_free()
     var sp = get_node("Sprite2D")
     sp.texture = item.item_sprite
+    audio = $AudioStreamPlayer2D
+    audio.finished.connect(remove)
     panel = get_node("Control")
     label = panel.get_node("Label")
     var t : RichTextLabel = label.get_node("RichTextLabel")
-    var limb_btns : HBoxContainer = label.get_node("LimbButtons")
+    var limb_btns : GridContainer = label.get_node("LimbButtons")
     var aid_btns : HBoxContainer = label.get_node("AidButtons")
     if item is Limb:
         t.text = t.text % [item.item_name, item.ability_name, item.condition]
@@ -50,7 +53,8 @@ func btn_confirmed(btn_name):
     if player == null:
         return
     player.give_item(item, btn_name)
-    queue_free()
+    audio.play()
+    hide()
 
 func _on_body_entered(body:Node2D) -> void:
     if not body is Player:
@@ -63,3 +67,6 @@ func _on_body_exited(body:Node2D) -> void:
         return
     player = null
     panel.hide()
+
+func remove():
+    queue_free()

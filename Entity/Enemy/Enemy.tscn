@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://jmv1ux02rl7l"]
+[gd_scene load_steps=27 format=3 uid="uid://jmv1ux02rl7l"]
 
 [ext_resource type="Script" path="res://Entity/Enemy/Enemy.gd" id="1_0aiib"]
 [ext_resource type="Texture2D" uid="uid://djtjk8cbbnflv" path="res://Texture/Enemy/L1/MoveFront/spritesheet.png" id="2_8774p"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ifmougxtenkh" path="res://Texture/Enemy/L1/MoveBack/spritesheet.png" id="4_kve65"]
 [ext_resource type="Texture2D" uid="uid://dw3b3xi4r26go" path="res://Texture/Enemy/L1/MoveLeft/spritesheet.png" id="5_akm6k"]
 [ext_resource type="Texture2D" uid="uid://cm2xl87jdh4so" path="res://Texture/Enemy/L1/MoveRight/spritesheet.png" id="6_c86xv"]
+[ext_resource type="AudioStream" uid="uid://bvk3qcc2wu43n" path="res://Sound/concrete-footsteps-6752.mp3" id="10_vruc2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqey0"]
 size = Vector2(128, 128)
@@ -170,6 +171,12 @@ input = NodePath("EnemyMovementInput")
 [node name="EnemyMovementInput" type="Node" parent="Movement" node_paths=PackedStringArray("parent")]
 script = ExtResource("3_u1ap3")
 parent = NodePath("../..")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Movement"]
+stream = ExtResource("10_vruc2")
+volume_db = 2.0
+max_distance = 1000.0
+bus = &"New Bus 2"
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(128, 10)

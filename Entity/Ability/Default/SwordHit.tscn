@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://tlvgs65sqib6"]
+[gd_scene load_steps=12 format=3 uid="uid://tlvgs65sqib6"]
 
 [ext_resource type="Script" path="res://Entity/Ability/Ability.gd" id="1_oghtp"]
 [ext_resource type="Texture2D" uid="uid://dp3dw0eo1rbqd" path="res://Texture/Ability/BasicSword/spritesheet.png" id="2_7n2sb"]
+[ext_resource type="AudioStream" uid="uid://b7jb854o75ag6" path="res://Sound/sword.mp3" id="3_ta03n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p6uoh"]
 atlas = ExtResource("2_7n2sb")
@@ -72,3 +73,6 @@ sprite_frames = SubResource("SpriteFrames_efe4k")
 autoplay = "default"
 frame = 6
 frame_progress = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ta03n")

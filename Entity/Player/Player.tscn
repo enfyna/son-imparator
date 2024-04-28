@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dsujvjmtm6rr6"]
+[gd_scene load_steps=25 format=3 uid="uid://dsujvjmtm6rr6"]
 
 [ext_resource type="Script" path="res://Entity/Player/Player.gd" id="1_sehdw"]
 [ext_resource type="Texture2D" uid="uid://dtge7koi56nhs" path="res://Texture/Player/Default2.png" id="2_0ykmf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dtrb0x7xalldm" path="res://Texture/Player/MoveBack/spritesheet.png" id="4_tggu4"]
 [ext_resource type="Texture2D" uid="uid://dxa53fvpt85m0" path="res://Texture/Player/MoveRight/spritesheet.png" id="4_tt8jh"]
 [ext_resource type="Texture2D" uid="uid://l466n4u45i16" path="res://Texture/Player/MoveFront/spritesheet.png" id="5_p8dp0"]
+[ext_resource type="AudioStream" uid="uid://bvk3qcc2wu43n" path="res://Sound/concrete-footsteps-6752.mp3" id="10_b1jyk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_erior"]
 size = Vector2(128, 128)
@@ -162,3 +163,7 @@ input = NodePath("KeyboardMovementInput")
 
 [node name="KeyboardMovementInput" type="Node" parent="Movement"]
 script = ExtResource("3_bum1e")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Movement"]
+stream = ExtResource("10_b1jyk")
+bus = &"New Bus"

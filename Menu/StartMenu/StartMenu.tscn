@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgguweg2pwf1g"]
+[gd_scene load_steps=7 format=3 uid="uid://dgguweg2pwf1g"]
 
 [ext_resource type="Texture2D" uid="uid://blggtxgb32dkl" path="res://Texture/splash.png" id="1_ibyb6"]
 [ext_resource type="FontFile" uid="uid://q2xr34r7712n" path="res://Font/BigBlue_TerminalPlus.TTF" id="1_vneos"]
 [ext_resource type="Script" path="res://Menu/StartMenu/StartMenu.gd" id="2_u3qiy"]
+[ext_resource type="AudioStream" uid="uid://csoh0rrcwrix6" path="res://Sound/buton_click.mp3" id="4_wla6m"]
 
 [sub_resource type="Theme" id="Theme_pm44x"]
 default_font = ExtResource("1_vneos")
@@ -86,7 +87,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Label2" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "İmparatorluk tahtında otururken ansızın ordunun demokrasi getirmek için bir ayaklanma hazırladıklarını ve saraya baskına geldiklerini öğrenirsin. Tek seçeneğin kendini ve tahtını korumak kalmıştır..."
+text = "İmparatorluk tahtında otururken ansızın ordunun demokrasi getirmek için bir ayaklanma hazırladıklarını ve saraya baskına geldiklerini öğrenirsin. Tek seçenek kendini ve tahtını korumaktır..."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -167,6 +168,10 @@ Eğer kol ve bacağınızın canı biterse ilaç ile yenileyemezsiniz. Düşmand
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_wla6m")
+volume_db = 10.0
 
 [connection signal="pressed" from="HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -26,7 +26,7 @@ func die():
     var col = load("res://Entity/Collectible/Collectible.tscn").instantiate()
     col.position = position
 
-    if randi() % 50 > 10:
+    if randi() % 100 > 40:
         const dir = "res://Entity/Item/Aid/"
         var aid_dir = DirAccess.get_files_at(dir)
         var pt = dir + aid_dir[randi() % aid_dir.size()]
@@ -38,6 +38,7 @@ func die():
         var pt = dir + limb_dir[randi() % limb_dir.size()]
         pt = pt.trim_suffix(".remap")
         col.item = load(pt)
+        col.item.condition = 90
     get_parent().call_deferred("add_child", col)
     call_deferred("queue_free")
 

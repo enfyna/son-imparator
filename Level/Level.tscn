@@ -18,10 +18,10 @@ script = ExtResource("1_5lyyn")
 EnemySpawnLoc = [NodePath("Marker2D"), NodePath("Marker2D2")]
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(1392, 496)
+position = Vector2(1706, 490)
 
 [node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(1400, 648)
+position = Vector2(1714, 642)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 9
@@ -53,7 +53,7 @@ position = Vector2(2456, 568)
 rotation = 3.14467
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/StaticBody2D3"]
-position = Vector2(1439.77, -76.4345)
+position = Vector2(1503.77, -76.628)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_1s8se")
 one_way_collision = true

@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Entity/Item/Limb.gd" id="1_5hmnr"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_5hmnr")
 type = 1
 ability_name = &"UltimateSwordHit"

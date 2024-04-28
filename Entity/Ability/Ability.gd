@@ -12,6 +12,7 @@ enum TYPE{
 @export var damage : int = 10
 @export var aoe_size : int
 @export var sprite : AnimatedSprite2D
+var audio : AudioStreamPlayer2D
 var is_attacking : bool = false
 var active_attack : Area2D 
 var hit_something : bool = false
@@ -29,6 +30,7 @@ func _ready() -> void:
     if sprite == null:
         queue_free()
     sprite.hide()
+    audio = $AudioStreamPlayer2D
 
 func activate(direction : int):
     if is_attacking and active_attack != null:
@@ -65,6 +67,7 @@ func activate(direction : int):
     
     hit_something = false
     is_attacking = true
+    audio.play()
 #    if type >= Ability.TYPE.RANGED_MULTI:
 #        set_process(true)
 #    else:

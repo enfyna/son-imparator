@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5elooauin8xh" path="res://Texture/Player/Limbs/sol_kol.png" id="1_7q1x0"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_2x8a7")
 type = 0
 ability_name = &"SwordHit"

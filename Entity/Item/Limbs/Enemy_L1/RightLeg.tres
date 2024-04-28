@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bmv2efcd3hdyc" path="res://Texture/Player/Limbs/b1.png" id="1_gg0ch"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_ara1i")
 type = 3
 ability_name = &""
